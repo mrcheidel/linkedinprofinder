@@ -4,6 +4,11 @@ Add salary range to the job finder
 
 Tired of receiving offers without salary? Try this script to filter only offers that have a published salary
 
+Install:
+```
+pip install -r requirements.txt
+```
+
 run using the bellow command:
 ```
  streamlit run main.py
