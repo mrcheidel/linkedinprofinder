@@ -2,5 +2,6 @@
 Add salary range to the job finder 
 
 run using the bellow command:
-
-streamlit run main.py
+```
+ streamlit run main.py
+```
