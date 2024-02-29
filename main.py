@@ -5,8 +5,12 @@ from urllib.parse import quote
 scale=10
 currency="€"
 
-
 st.title("Linkedin Salary Rank Jobs Finder")
+
+options = st.multiselect(
+    'Place to work',
+    ['Remote', 'Hybrid', 'On-Site'],
+    ['Remote'])
 
 values = st.slider(
     'Select a salary rank in k' + currency,
@@ -71,9 +75,27 @@ if len(includefilter) > 0:
 	filter= "(" +filter + includefilter + ") "
 filter+=excludefilter
 
-url = "https://www.linkedin.com/jobs/search/?distance=25&f_TPR=r86400&f_WT=2&geoId=91000000&keywords=" + quote(filter) + "&location=European%20Union&origin=JOB_SEARCH_PAGE_JOB_FILTER&refresh=true"
-st.write (url)
+f_WT=""
+if "Remote" in options:
+	if len(f_WT)>0:
+		f_WT+=","
+	f_WT+="2"
 
+if "Hybrid" in options:
+	if len(f_WT)>0:
+		f_WT+=","
+	f_WT+="3"
+if "On-Site" in options:
+	if len(f_WT)>0:
+		f_WT+=","
+	f_WT+="1"
+
+url = "https://www.linkedin.com/jobs/search/?distance=25&f_TPR=r86400"
+if len(f_WT)>0:
+	url += "&f_WT=" + quote(f_WT)
+url += "&geoId=91000000&keywords=" + quote(filter) + "&location=European%20Union&origin=JOB_SEARCH_PAGE_JOB_FILTER&refresh=true"
+
+st.write (url)
 st.link_button("Open in Linkedin", url)
 
 
