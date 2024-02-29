@@ -24,9 +24,8 @@ exclude = st.text_area(
     ).strip()
     
 include = st.text_area(
-    "Include words (In example technologies)",
-    "Kafka\n"
-    "AWS"
+    "Include words in the Job Title",
+    ""
     ).strip()
 
 minv=values[0]
@@ -68,7 +67,7 @@ includefilter = ""
 if len(include) > 0:
 	for txt in include.split("\n"):
 		if len(includefilter) > 0:
-			includefilter+=" AND "
+			includefilter+=" OR "
 		includefilter += "\"" + txt + "\""
 	includefilter = " AND (" + includefilter + ")"
 	
