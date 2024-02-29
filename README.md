@@ -1,4 +1,4 @@
-# linkedin pro finder
+# Linkedin pro finder
 
 Add salary range to the job finder 
 
