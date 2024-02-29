@@ -5,4 +5,4 @@ run using the bellow command:
 ```
  streamlit run main.py
 ```
-![Screenshot](screenshot.png)
+![Screenshot](screenshot1.png)
