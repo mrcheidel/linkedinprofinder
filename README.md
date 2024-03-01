@@ -2,7 +2,7 @@
 
 Add salary range to the job finder 
 
-Tired of receiving offers without salary? Try this script to filter only offers that have a published salary
+Tired of receiving offers without salary? Try this script to filter only offers that have a published salary. Also you can filter (remove) the dubious companies.
 
 ## Test online:
 
