@@ -22,4 +22,4 @@ pip install -r requirements.txt
 ```
 ## Example 
 
-![Screenshot](screenshot1.png)
+![Screenshot](screenshot.png)
