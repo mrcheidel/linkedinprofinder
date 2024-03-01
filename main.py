@@ -5,7 +5,7 @@ from urllib.parse import quote
 scale=10
 currency="€"
 
-
+st.set_page_config(page_title="Linkedin Salary Rank Jobs Finder", page_icon="shark")
 st.title("Linkedin Salary Rank Jobs Finder")
 
 options = st.multiselect(
@@ -97,5 +97,3 @@ url += "&geoId=91000000&keywords=" + quote(filter) + "&location=European%20Union
 
 st.write (url)
 st.link_button("Open in Linkedin", url)
-
-
