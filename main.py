@@ -15,7 +15,7 @@ options = st.multiselect(
 
 values = st.slider(
     'Select a salary rank in k' + currency,
-    0, 300, (55, 200))
+    0, 300, (100, 250))
 
 exclude = st.text_area(
     "Exclude words (in example company names)",
