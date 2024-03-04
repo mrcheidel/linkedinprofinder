@@ -33,4 +33,4 @@ pattern = st.text_input(
 url = gen_filter(values, exclude, include, 10, placetowork, pattern)
 st.write (url)
 st.link_button("Open in Linkedin", url)
-st.write (":link: [gihub](https://github.com/mrcheidel/linkedinprofinder)")
+st.write ("Source code: [gihub](https://github.com/mrcheidel/linkedinprofinder)")
