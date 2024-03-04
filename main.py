@@ -11,14 +11,8 @@ placetowork = st.multiselect(
 
 values = st.slider(
     'Select a salary rank in k',
-    0, 300, (100, 250))
+    40, 250, (100, 250))
     
-    
-pattern="\"{salary},000\" OR \"{salary}k\""
-pattern = st.text_input(
-        "Enter the salary pattern here 👇",
-        value=pattern
-    ).strip()
 
 exclude = st.text_area(
     "Exclude words (in example company names)",
@@ -29,6 +23,11 @@ exclude = st.text_area(
 include = st.text_area(
     "Include words in the Job Title",
     ""
+    ).strip()
+    
+pattern = st.text_input(
+        "ADVANCED: Salary pattern",
+        value="\"{salary},000\" OR \"{salary}k\""
     ).strip()
 	
 url = gen_filter(values, exclude, include, 10, placetowork, pattern)
