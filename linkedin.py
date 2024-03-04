@@ -1,7 +1,7 @@
 import math
 from urllib.parse import quote
 
-def gen_filter(values, exclude, include, scale, placetowork, pattern):
+def gen_filter(values, exclude, include, scale, placetowork, pattern, location):
 	minv=values[0]
 	maxv=values[1]
 	minm=math.fmod(minv, scale)
@@ -64,8 +64,8 @@ def gen_filter(values, exclude, include, scale, placetowork, pattern):
 			f_WT+=","
 		f_WT+="1"
 
-	url = "https://www.linkedin.com/jobs/search/?distance=25&f_TPR=r604800"
+	url = "https://www.linkedin.com/jobs/search/?f_TPR=r604800"
 	if len(f_WT)>0:
 		url += "&f_WT=" + quote(f_WT)
-	url += "&geoId=91000000&keywords=" + quote(filter) + "&location=European%20Union&origin=JOB_SEARCH_PAGE_JOB_FILTER&refresh=true"
+	url += "&geoId=91000000&keywords=" + quote(filter) + "&location=" + quote(location) + "&origin=JOB_SEARCH_PAGE_JOB_FILTER&refresh=true"
 	return (url)
