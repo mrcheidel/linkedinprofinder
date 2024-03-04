@@ -12,6 +12,13 @@ placetowork = st.multiselect(
 values = st.slider(
     'Select a salary rank in k',
     0, 300, (100, 250))
+    
+    
+pattern="\"{salary},000\" OR \"{salary}k\""
+pattern = st.text_input(
+        "Enter the salary pattern here 👇",
+        value=pattern
+    ).strip()
 
 exclude = st.text_area(
     "Exclude words (in example company names)",
@@ -24,7 +31,7 @@ include = st.text_area(
     ""
     ).strip()
 	
-url = gen_filter(values, exclude, include, 10, "€", placetowork)
+url = gen_filter(values, exclude, include, 10, placetowork, pattern)
 st.write (url)
 st.link_button("Open in Linkedin", url)
 st.write (":link: [gihub](https://github.com/mrcheidel/linkedinprofinder)")
