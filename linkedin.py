@@ -1,7 +1,7 @@
 import math
 from urllib.parse import quote
 
-def gen_filter(values, exclude, include, scale, currency, placetowork):
+def gen_filter(values, exclude, include, scale, placetowork, pattern):
 	minv=values[0]
 	maxv=values[1]
 	minm=math.fmod(minv, scale)
@@ -14,17 +14,18 @@ def gen_filter(values, exclude, include, scale, currency, placetowork):
 
 	v=minn
 	filter=""
-
+	print("0")
 	if minv < minn:
-		filter+= "\"" + currency + str(int(minv)) + ",000\" OR \"" + currency + str(int(minv)) + "k\""
+		filter+=pattern.replace("{salary}", str(int(minv)))
 	while v < maxb:
 		if len(filter) > 0:
 			filter+=" OR "
-		filter+= "\"" + currency + str(int(v)) + ",000\" OR \"" + currency + str(int(v)) + "k\""
+		filter+=pattern.replace("{salary}", str(int(v)))
 		v += scale
 	if maxb < maxv:
-		filter+= "\"" + currency + str(int(maxv)) + ",000\" OR \"" + currency + str(int(maxv)) + "k\""
-	
+		if len(filter) > 0:
+			filter+=" OR "
+		filter+=pattern.replace("{salary}", str(int(maxv)))
 	filter = "(" + filter + ")"
 
 	excludefilter = ""
