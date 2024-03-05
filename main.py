@@ -1,8 +1,8 @@
 import streamlit as st
 from linkedin import gen_filter
 
-st.set_page_config(page_title="Linkedin Salary Rank Jobs Finder", page_icon="shark")
-st.title("Linkedin Salary Rank Jobs Finder")
+st.set_page_config(page_title="Linkedin Job Finder: Filter Helper", page_icon="shark")
+st.title("Linkedin Job Finder: Filter Helper")
 
 placetowork = st.multiselect(
     'Place to work',
@@ -24,13 +24,25 @@ include = st.text_area(
     "Include words in the Job Title",
     ""
     ).strip()
-    
-pattern = st.text_input(
-        "ADVANCED: Salary pattern",
+  
+with st.expander("ADVANCED"):
+	pattern = st.text_input(
+        "Salary pattern",
         value="\"{salary},000\" OR \"{salary}k\""
     ).strip()
+    
+	geoId = st.text_input(
+        "GeoId:",
+        value="91000007"
+    ).strip()
+    
+	location = st.text_input(
+        "Location:",
+        value="EMEA"
+    ).strip()
+    
+	url = gen_filter(values, exclude, include, 10, placetowork, pattern, location, geoId)
+	st.write (url)
+	st.write ("Contact: [Linkedin](https://www.linkedin.com/in/mrcheidel/)")
 	
-url = gen_filter(values, exclude, include, 10, placetowork, pattern, "EMEA")
-st.write (url)
-st.link_button("Open in Linkedin", url)
-st.write ("Source code: [gihub](https://github.com/mrcheidel/linkedinprofinder)")
+st.link_button("Apply on Linkedin", url)
